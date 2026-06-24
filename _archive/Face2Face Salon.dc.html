@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:#0F0F0F;overflow-x:hidden}
+  ::selection{background:#D4AF37;color:#0F0F0F}
+  ::-webkit-scrollbar{width:8px}
+  ::-webkit-scrollbar-track{background:#0F0F0F}
+  ::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:8px}
+  @keyframes f2fFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  @keyframes f2fGlow{0%,100%{opacity:.35}50%{opacity:.6}}
+  @keyframes f2fShine{0%{transform:translateX(-120%) skewX(-20deg)}100%{transform:translateX(220%) skewX(-20deg)}}
+  @keyframes f2fGrain{0%,100%{transform:translate(0,0)}10%{transform:translate(-3%,-2%)}30%{transform:translate(2%,-4%)}50%{transform:translate(-2%,3%)}70%{transform:translate(3%,2%)}90%{transform:translate(-3%,1%)}}
+  @keyframes f2fSpin{to{transform:rotate(360deg)}}
+  @keyframes f2fFade{from{opacity:0}to{opacity:1}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="font-family:'Jost',sans-serif;background:#0F0F0F;color:#F8F8F8;position:relative;min-height:100vh">
+
+  <!-- scroll progress -->
+  <div data-progress="1" style="position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#9a7d28,#D4AF37,#f0d979);z-index:200;box-shadow:0 0 12px rgba(212,175,55,.6)"></div>
+
+  <!-- NAVBAR -->
+  <nav data-nav-bar="1" style="position:fixed;top:0;left:0;right:0;z-index:150;display:flex;align-items:center;justify-content:space-between;padding:26px 6vw;transition:all .5s cubic-bezier(.16,1,.3,1);background:transparent;border-bottom:1px solid transparent">
+    <a href="#top" data-nav="top" style="text-decoration:none;display:flex;flex-direction:column;line-height:.95">
+      <span style="font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:500;letter-spacing:.5px;color:#F8F8F8">Face<span style="color:#D4AF37">2</span>Face</span>
+      <span style="font-size:8.5px;letter-spacing:5px;color:rgba(248,248,248,.45);text-transform:uppercase;margin-top:3px;padding-left:1px">Family Salon</span>
+    </a>
+    <div data-nav-links style="display:flex;align-items:center;gap:38px">
+      <a href="#services" data-nav="services" style="text-decoration:none;color:rgba(248,248,248,.62);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s">Services</a>
+      <a href="#about" data-nav="about" style="text-decoration:none;color:rgba(248,248,248,.62);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s">About</a>
+      <a href="#gallery" data-nav="gallery" style="text-decoration:none;color:rgba(248,248,248,.62);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s">Gallery</a>
+      <a href="#reviews" data-nav="reviews" style="text-decoration:none;color:rgba(248,248,248,.62);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s">Reviews</a>
+      <a href="#contact" data-nav="contact" style="text-decoration:none;color:rgba(248,248,248,.62);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s">Contact</a>
+    </div>
+    <a href="#book" style="text-decoration:none;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:9px;padding:12px 26px;border:1px solid rgba(212,175,55,.45);border-radius:40px;color:#F8F8F8;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(212,175,55,.06);transition:all .4s" style-hover="background:rgba(212,175,55,.16);border-color:#D4AF37">
+      <span style="width:6px;height:6px;border-radius:50%;background:#D4AF37;box-shadow:0 0 8px #D4AF37"></span>Book Appointment
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="top" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden">
+    <!-- hero image placeholder -->
+    <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 75% 18%,#23211c 0%,#15140f 38%,#0c0c0c 72%,#080808 100%)"></div>
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(120% 80% at 70% 30%,#000 30%,transparent 80%)"></div>
+    <div style="position:absolute;top:8%;right:6%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.16),transparent 65%);filter:blur(20px);animation:f2fGlow 7s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,8,.92) 0%,rgba(8,8,8,.55) 45%,rgba(8,8,8,.25) 100%)"></div>
+    <div style="position:absolute;bottom:18px;right:24px;font-family:monospace;font-size:10px;letter-spacing:1px;color:rgba(248,248,248,.22)">[ hero salon visual ]</div>
+
+    <div style="position:relative;z-index:5;padding:0 6vw;max-width:880px">
+      <div data-reveal data-delay="0" style="display:flex;align-items:center;gap:14px;margin-bottom:30px">
+        <span style="width:46px;height:1px;background:#D4AF37"></span>
+        <span style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37">Suratgarh, Rajasthan</span>
+      </div>
+      <h1 data-reveal data-delay="120" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(48px,7.4vw,108px);line-height:.98;letter-spacing:-1px">
+        Luxury Grooming.<br><span style="font-style:italic;font-weight:400;color:#D4AF37">Timeless</span> Style.
+      </h1>
+      <p data-reveal data-delay="240" style="margin-top:30px;max-width:520px;font-size:17px;line-height:1.75;color:rgba(248,248,248,.66);font-weight:300">
+        A premium salon experience crafted for men &amp; women — where precision, comfort and quiet luxury meet in the heart of Suratgarh.
+      </p>
+      <div data-reveal data-delay="360" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:44px">
+        <a href="#book" style="text-decoration:none;position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;padding:17px 36px;border-radius:46px;background:#F8F8F8;color:#0F0F0F;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:transform .4s,box-shadow .4s" style-hover="transform:translateY(-3px);box-shadow:0 18px 40px rgba(212,175,55,.22)">Book Appointment</a>
+        <a href="tel:+919829000000" style="text-decoration:none;display:inline-flex;align-items:center;gap:11px;padding:17px 34px;border-radius:46px;border:1px solid rgba(248,248,248,.22);color:#F8F8F8;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:400;transition:all .4s" style-hover="border-color:#D4AF37;background:rgba(212,175,55,.06)">
+          <span style="display:inline-flex;width:8px;height:8px;border-radius:50%;background:#D4AF37"></span>Call Now
+        </a>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:6vw;bottom:42px;display:flex;align-items:center;gap:10px;color:rgba(248,248,248,.4);font-size:11px;letter-spacing:2px;text-transform:uppercase">
+      <span style="width:1px;height:34px;background:linear-gradient(#D4AF37,transparent)"></span>Scroll
+    </div>
+  </section>
+
+  <!-- FLOATING STATS -->
+  <section style="position:relative;z-index:10;margin-top:-72px;padding:0 6vw 90px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07);border-radius:22px;overflow:hidden;backdrop-filter:blur(14px);box-shadow:0 30px 70px rgba(0,0,0,.5)">
+      <div data-reveal data-delay="0" style="background:rgba(20,20,20,.72);padding:38px 30px;text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:400;color:#D4AF37"><span data-count="4.6" data-dec="1">0.0</span><span style="font-size:24px">★</span></div>
+        <div style="margin-top:8px;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(248,248,248,.5)">Average Rating</div>
+      </div>
+      <div data-reveal data-delay="100" style="background:rgba(20,20,20,.72);padding:38px 30px;text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:400;color:#F8F8F8"><span data-count="80" data-dec="0">0</span><span style="color:#D4AF37">+</span></div>
+        <div style="margin-top:8px;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(248,248,248,.5)">Happy Reviews</div>
+      </div>
+      <div data-reveal data-delay="200" style="background:rgba(20,20,20,.72);padding:38px 30px;text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:400;color:#F8F8F8">100<span style="color:#D4AF37">%</span></div>
+        <div style="margin-top:8px;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(248,248,248,.5)">Premium Products</div>
+      </div>
+      <div data-reveal data-delay="300" style="background:rgba(20,20,20,.72);padding:38px 30px;text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:400;color:#F8F8F8"><span data-count="12" data-dec="0">0</span><span style="color:#D4AF37">+</span></div>
+        <div style="margin-top:8px;font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(248,248,248,.5)">Pro Stylists</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="position:relative;padding:110px 6vw 120px;background:#0F0F0F">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:66px">
+      <div data-reveal style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+        <span style="width:34px;height:1px;background:#D4AF37"></span>
+        <span style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37">What We Offer</span>
+        <span style="width:34px;height:1px;background:#D4AF37"></span>
+      </div>
+      <h2 data-reveal data-delay="80" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,68px);line-height:1.04">Signature <span style="font-style:italic;color:#D4AF37">Services</span></h2>
+      <p data-reveal data-delay="160" style="margin-top:18px;max-width:480px;color:rgba(248,248,248,.55);font-weight:300;line-height:1.7">A curated menu of treatments delivered with precision and care for every member of the family.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px">
+      <!-- card -->
+      <div data-reveal data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">01</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Hair Cut</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Precision cuts tailored to your face &amp; style.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-delay="60" data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">02</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Hair Styling</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Blow-dry, sets &amp; finishes for any occasion.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-delay="120" data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">03</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Hair Spa</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Deep nourishment &amp; scalp revitalisation.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-delay="180" data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">04</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Hair Colour</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Global colour, highlights &amp; balayage.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">05</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Beard Grooming</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Shaping, trims &amp; hot-towel rituals.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-delay="60" data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">06</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Facial</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Brightening &amp; rejuvenating skin therapies.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-delay="120" data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">07</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Skin Care</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Consultation-led routines &amp; treatments.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-delay="180" data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">08</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Bridal Makeup</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Signature looks for your biggest day.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">09</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Waxing</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Gentle, premium-wax smooth finishes.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-delay="60" data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">10</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Manicure</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Immaculate nails &amp; hand care.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+      <div data-reveal data-delay="120" data-svc style="position:relative;overflow:hidden;padding:34px 28px;border-radius:20px;background:#161616;border:1px solid rgba(255,255,255,.06);transition:transform .5s cubic-bezier(.16,1,.3,1),border-color .5s,background .5s" style-hover="transform:translateY(-8px);border-color:rgba(212,175,55,.5);background:#1A1A1A">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:15px;color:#D4AF37;letter-spacing:2px">11</div>
+        <h3 style="margin-top:18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px">Pedicure</h3>
+        <p style="margin-top:10px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Restorative foot &amp; sole therapy.</p>
+        <span style="position:absolute;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,#D4AF37,transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s" data-svc-line></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section style="position:relative;padding:110px 6vw 120px;background:#0c0c0c;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)">
+    <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:64px;align-items:start">
+      <div style="position:sticky;top:120px">
+        <div data-reveal style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+          <span style="width:34px;height:1px;background:#D4AF37"></span>
+          <span style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37">Why Choose Us</span>
+        </div>
+        <h2 data-reveal data-delay="80" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.4vw,58px);line-height:1.05">A standard of care<br>you can <span style="font-style:italic;color:#D4AF37">feel</span>.</h2>
+        <p data-reveal data-delay="160" style="margin-top:22px;max-width:340px;color:rgba(248,248,248,.55);font-weight:300;line-height:1.75">Every detail — from our products to our chairs — is chosen to make luxury feel effortless and within reach.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+        <div data-reveal style="padding:30px 26px;border-radius:18px;background:#141414;border:1px solid rgba(255,255,255,.06);transition:all .5s" style-hover="border-color:rgba(212,175,55,.4);transform:translateY(-5px)">
+          <div style="width:46px;height:46px;border-radius:12px;border:1px solid rgba(212,175,55,.35);display:flex;align-items:center;justify-content:center;color:#D4AF37;font-family:'Cormorant Garamond',serif;font-size:22px">✦</div>
+          <h3 style="margin-top:18px;font-size:18px;font-weight:500;letter-spacing:.3px">Professional Team</h3>
+          <p style="margin-top:8px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Trained, certified stylists with a passion for the craft.</p>
+        </div>
+        <div data-reveal data-delay="80" style="padding:30px 26px;border-radius:18px;background:#141414;border:1px solid rgba(255,255,255,.06);transition:all .5s" style-hover="border-color:rgba(212,175,55,.4);transform:translateY(-5px)">
+          <div style="width:46px;height:46px;border-radius:12px;border:1px solid rgba(212,175,55,.35);display:flex;align-items:center;justify-content:center;color:#D4AF37;font-family:'Cormorant Garamond',serif;font-size:22px">❖</div>
+          <h3 style="margin-top:18px;font-size:18px;font-weight:500;letter-spacing:.3px">Premium Products</h3>
+          <p style="margin-top:8px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Only trusted, salon-grade brands touch your skin &amp; hair.</p>
+        </div>
+        <div data-reveal data-delay="40" style="padding:30px 26px;border-radius:18px;background:#141414;border:1px solid rgba(255,255,255,.06);transition:all .5s" style-hover="border-color:rgba(212,175,55,.4);transform:translateY(-5px)">
+          <div style="width:46px;height:46px;border-radius:12px;border:1px solid rgba(212,175,55,.35);display:flex;align-items:center;justify-content:center;color:#D4AF37;font-family:'Cormorant Garamond',serif;font-size:22px">◈</div>
+          <h3 style="margin-top:18px;font-size:18px;font-weight:500;letter-spacing:.3px">Modern Equipment</h3>
+          <p style="margin-top:8px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">State-of-the-art tools for flawless, lasting results.</p>
+        </div>
+        <div data-reveal data-delay="120" style="padding:30px 26px;border-radius:18px;background:#141414;border:1px solid rgba(255,255,255,.06);transition:all .5s" style-hover="border-color:rgba(212,175,55,.4);transform:translateY(-5px)">
+          <div style="width:46px;height:46px;border-radius:12px;border:1px solid rgba(212,175,55,.35);display:flex;align-items:center;justify-content:center;color:#D4AF37;font-family:'Cormorant Garamond',serif;font-size:22px">✧</div>
+          <h3 style="margin-top:18px;font-size:18px;font-weight:500;letter-spacing:.3px">Hygienic Environment</h3>
+          <p style="margin-top:8px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Sanitised stations and single-use essentials, always.</p>
+        </div>
+        <div data-reveal data-delay="80" style="padding:30px 26px;border-radius:18px;background:#141414;border:1px solid rgba(255,255,255,.06);transition:all .5s" style-hover="border-color:rgba(212,175,55,.4);transform:translateY(-5px)">
+          <div style="width:46px;height:46px;border-radius:12px;border:1px solid rgba(212,175,55,.35);display:flex;align-items:center;justify-content:center;color:#D4AF37;font-family:'Cormorant Garamond',serif;font-size:22px">◇</div>
+          <h3 style="margin-top:18px;font-size:18px;font-weight:500;letter-spacing:.3px">Affordable Luxury</h3>
+          <p style="margin-top:8px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">Metro-city quality at a price that feels right.</p>
+        </div>
+        <div data-reveal data-delay="160" style="padding:30px 26px;border-radius:18px;background:#141414;border:1px solid rgba(255,255,255,.06);transition:all .5s" style-hover="border-color:rgba(212,175,55,.4);transform:translateY(-5px)">
+          <div style="width:46px;height:46px;border-radius:12px;border:1px solid rgba(212,175,55,.35);display:flex;align-items:center;justify-content:center;color:#D4AF37;font-family:'Cormorant Garamond',serif;font-size:22px">✺</div>
+          <h3 style="margin-top:18px;font-size:18px;font-weight:500;letter-spacing:.3px">Personal Consultation</h3>
+          <p style="margin-top:8px;font-size:13px;color:rgba(248,248,248,.5);line-height:1.65;font-weight:300">A tailored plan built around you, every visit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" style="position:relative;padding:120px 6vw;background:#0F0F0F">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
+      <div data-reveal style="position:relative">
+        <div style="position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:radial-gradient(120% 120% at 30% 20%,#23211c,#121110 55%,#0b0b0b)">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px"></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:54px;color:rgba(212,175,55,.5)">F2F</span>
+            <span style="font-family:monospace;font-size:10px;letter-spacing:2px;color:rgba(248,248,248,.3)">[ salon portrait ]</span>
+          </div>
+        </div>
+        <div style="position:absolute;-bottom:0;bottom:-28px;right:-22px;padding:24px 28px;border-radius:16px;background:#1A1A1A;border:1px solid rgba(212,175,55,.3);box-shadow:0 24px 60px rgba(0,0,0,.5);animation:f2fFloat 6s ease-in-out infinite">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:34px;color:#D4AF37">Est. 2018</div>
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(248,248,248,.5);margin-top:2px">Serving Suratgarh</div>
+        </div>
+      </div>
+      <div>
+        <div data-reveal style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+          <span style="width:34px;height:1px;background:#D4AF37"></span>
+          <span style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37">Our Story</span>
+        </div>
+        <h2 data-reveal data-delay="80" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.6vw,60px);line-height:1.06">Where the town comes<br>to feel <span style="font-style:italic;color:#D4AF37">its best</span>.</h2>
+        <p data-reveal data-delay="160" style="margin-top:26px;color:rgba(248,248,248,.6);font-weight:300;line-height:1.85;font-size:15.5px">Face2Face began with a simple belief — that everyone in Suratgarh deserves the kind of grooming experience usually reserved for the big cities. Today, our family salon brings together skilled hands, considered design and genuine warmth under one roof.</p>
+        <p data-reveal data-delay="220" style="margin-top:18px;color:rgba(248,248,248,.6);font-weight:300;line-height:1.85;font-size:15.5px">From a quick gentleman's cut to a full bridal transformation, every guest is met with the same quiet attention to detail.</p>
+        <div data-reveal data-delay="300" style="margin-top:36px;display:flex;gap:48px">
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:#D4AF37">8+</div>
+            <div style="font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(248,248,248,.5);margin-top:4px">Years of Trust</div>
+          </div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:40px;color:#D4AF37">5K+</div>
+            <div style="font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(248,248,248,.5);margin-top:4px">Guests Served</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE (alternate) -->
+  <section style="position:relative;padding:0 6vw 120px;background:#0F0F0F">
+    <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:72px;align-items:center">
+      <div>
+        <div data-reveal style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+          <span style="width:34px;height:1px;background:#D4AF37"></span>
+          <span style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37">The Experience</span>
+        </div>
+        <h2 data-reveal data-delay="80" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(34px,4.6vw,60px);line-height:1.06">More than a salon —<br>a <span style="font-style:italic;color:#D4AF37">ritual</span> of calm.</h2>
+        <p data-reveal data-delay="160" style="margin-top:26px;max-width:460px;color:rgba(248,248,248,.6);font-weight:300;line-height:1.85;font-size:15.5px">Step inside and the noise of the day falls away. Soft lighting, considered scents and a chair that's all yours — we design every visit to feel like an hour stolen back for yourself.</p>
+        <ul data-reveal data-delay="220" style="margin-top:28px;list-style:none;display:flex;flex-direction:column;gap:14px">
+          <li style="display:flex;align-items:center;gap:14px;color:rgba(248,248,248,.75);font-size:15px;font-weight:300"><span style="color:#D4AF37">—</span> Complimentary consultation with every service</li>
+          <li style="display:flex;align-items:center;gap:14px;color:rgba(248,248,248,.75);font-size:15px;font-weight:300"><span style="color:#D4AF37">—</span> Private, comfortable family-friendly spaces</li>
+          <li style="display:flex;align-items:center;gap:14px;color:rgba(248,248,248,.75);font-size:15px;font-weight:300"><span style="color:#D4AF37">—</span> Refreshments while you unwind</li>
+        </ul>
+      </div>
+      <div data-reveal data-delay="120" style="position:relative;aspect-ratio:3/4;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:radial-gradient(120% 120% at 70% 20%,#221f1a,#111,#0a0a0a)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:38px 38px"></div>
+        <div style="position:absolute;top:0;left:0;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(212,175,55,.08),transparent);animation:f2fShine 6s ease-in-out infinite"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+          <span style="font-family:monospace;font-size:10px;letter-spacing:2px;color:rgba(248,248,248,.32)">[ lifestyle visual ]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="position:relative;padding:110px 6vw 120px;background:#0c0c0c;border-top:1px solid rgba(255,255,255,.04)">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:60px">
+      <div data-reveal style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+        <span style="width:34px;height:1px;background:#D4AF37"></span>
+        <span style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37">Gallery</span>
+        <span style="width:34px;height:1px;background:#D4AF37"></span>
+      </div>
+      <h2 data-reveal data-delay="80" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,68px);line-height:1.04">A look <span style="font-style:italic;color:#D4AF37">inside</span></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;gap:16px">
+      <div data-reveal data-gal style="grid-row:span 2;position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:radial-gradient(120% 120% at 30% 20%,#262320,#141210,#0a0a0a);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s" style-hover="transform:scale(1.025);box-shadow:0 26px 60px rgba(0,0,0,.55)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.65))"></div>
+        <div style="position:absolute;left:22px;bottom:20px"><div style="font-family:'Cormorant Garamond',serif;font-size:24px">Salon Interior</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-top:3px">View</div></div>
+      </div>
+      <div data-reveal data-delay="60" data-gal style="position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:radial-gradient(120% 120% at 70% 30%,#241f1d,#131211,#0a0a0a);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s" style-hover="transform:scale(1.025);box-shadow:0 26px 60px rgba(0,0,0,.55)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.65))"></div>
+        <div style="position:absolute;left:20px;bottom:18px"><div style="font-family:'Cormorant Garamond',serif;font-size:22px">Hair Styling</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-top:3px">View</div></div>
+      </div>
+      <div data-reveal data-delay="120" data-gal style="grid-row:span 2;position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:radial-gradient(120% 120% at 40% 30%,#262019,#141110,#0a0a0a);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s" style-hover="transform:scale(1.025);box-shadow:0 26px 60px rgba(0,0,0,.55)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.65))"></div>
+        <div style="position:absolute;left:22px;bottom:20px"><div style="font-family:'Cormorant Garamond',serif;font-size:24px">Bridal Makeup</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-top:3px">View</div></div>
+      </div>
+      <div data-reveal data-gal style="position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:radial-gradient(120% 120% at 60% 20%,#231f1c,#131110,#0a0a0a);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s" style-hover="transform:scale(1.025);box-shadow:0 26px 60px rgba(0,0,0,.55)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.65))"></div>
+        <div style="position:absolute;left:20px;bottom:18px"><div style="font-family:'Cormorant Garamond',serif;font-size:22px">Hair Colour</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-top:3px">View</div></div>
+      </div>
+      <div data-reveal data-delay="60" data-gal style="position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:radial-gradient(120% 120% at 30% 40%,#26211a,#141210,#0a0a0a);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s" style-hover="transform:scale(1.025);box-shadow:0 26px 60px rgba(0,0,0,.55)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.65))"></div>
+        <div style="position:absolute;left:20px;bottom:18px"><div style="font-family:'Cormorant Garamond',serif;font-size:22px">Skin Care</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-top:3px">View</div></div>
+      </div>
+      <div data-reveal data-delay="120" data-gal style="grid-column:span 2;position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.06);background:radial-gradient(120% 120% at 60% 30%,#262320,#141110,#0a0a0a);cursor:pointer;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s" style-hover="transform:scale(1.018);box-shadow:0 26px 60px rgba(0,0,0,.55)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.55),transparent 60%)"></div>
+        <div style="position:absolute;left:24px;bottom:20px"><div style="font-family:'Cormorant Garamond',serif;font-size:24px">Waiting Lounge</div><div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-top:3px">View</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="position:relative;padding:120px 6vw;background:#0F0F0F;overflow:hidden">
+    <div style="position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.07),transparent 65%);filter:blur(30px);pointer-events:none"></div>
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:54px">
+      <div data-reveal style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+        <span style="width:34px;height:1px;background:#D4AF37"></span>
+        <span style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37">Kind Words</span>
+        <span style="width:34px;height:1px;background:#D4AF37"></span>
+      </div>
+      <h2 data-reveal data-delay="80" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(36px,5vw,68px);line-height:1.04">Loved by <span style="font-style:italic;color:#D4AF37">our guests</span></h2>
+    </div>
+
+    <div data-reveal data-delay="120" style="position:relative;max-width:760px;margin:0 auto">
+      <div style="position:relative;padding:54px 50px;border-radius:24px;background:linear-gradient(180deg,#1a1a1a,#141414);border:1px solid rgba(255,255,255,.07);box-shadow:0 30px 80px rgba(0,0,0,.5);text-align:center;min-height:280px">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:90px;line-height:.4;color:rgba(212,175,55,.25);height:36px">“</div>
+        <div style="color:#D4AF37;letter-spacing:5px;font-size:17px;margin-bottom:22px">★★★★★</div>
+        <p style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(20px,2.5vw,29px);line-height:1.5;color:#F8F8F8;min-height:120px">{{ review.text }}</p>
+        <div style="margin-top:30px;display:flex;align-items:center;justify-content:center;gap:14px">
+          <div style="width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#2a2a2a,#161616);border:1px solid rgba(212,175,55,.4);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;color:#D4AF37;font-size:18px">{{ review.initial }}</div>
+          <div style="text-align:left">
+            <div style="font-size:15px;font-weight:500;letter-spacing:.3px">{{ review.name }}</div>
+            <div style="font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(248,248,248,.45)">{{ review.role }}</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:22px;margin-top:32px">
+        <button onClick="{{ prevReview }}" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:transparent;color:#F8F8F8;cursor:pointer;font-size:18px;transition:all .35s" style-hover="border-color:#D4AF37;background:rgba(212,175,55,.08)">‹</button>
+        <div style="display:flex;gap:9px" data-dots>
+          <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="4">
+            <button onClick="{{ r.go }}" style="{{ r.dotStyle }}"></button>
+          </sc-for>
+        </div>
+        <button onClick="{{ nextReview }}" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:transparent;color:#F8F8F8;cursor:pointer;font-size:18px;transition:all .35s" style-hover="border-color:#D4AF37;background:rgba(212,175,55,.08)">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK CTA -->
+  <section id="book" style="position:relative;padding:0 6vw 120px;background:#0F0F0F">
+    <div style="position:relative;overflow:hidden;border-radius:30px;padding:90px 7%;text-align:center;background:radial-gradient(120% 140% at 50% 0%,#222018,#15140f 55%,#0c0c0a);border:1px solid rgba(212,175,55,.18)">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(80% 80% at 50% 30%,#000,transparent)"></div>
+      <div style="position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.16),transparent 65%);filter:blur(30px);animation:f2fGlow 8s ease-in-out infinite;pointer-events:none"></div>
+      <div style="position:relative">
+        <div data-reveal style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37;margin-bottom:22px">Reserve Your Chair</div>
+        <h2 data-reveal data-delay="80" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(38px,5.6vw,76px);line-height:1.02">Your best look is<br>one <span style="font-style:italic;color:#D4AF37">appointment</span> away.</h2>
+        <p data-reveal data-delay="160" style="margin-top:22px;max-width:480px;margin-left:auto;margin-right:auto;color:rgba(248,248,248,.6);font-weight:300;line-height:1.7">Walk-ins welcome, but a quick booking keeps your wait to zero. We'll be ready for you.</p>
+        <div data-reveal data-delay="240" style="margin-top:42px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+          <a href="tel:+919829000000" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:17px 34px;border-radius:46px;border:1px solid rgba(248,248,248,.22);color:#F8F8F8;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s" style-hover="border-color:#D4AF37;background:rgba(212,175,55,.06)">Call Now</a>
+          <a href="https://wa.me/919829000000" target="_blank" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:17px 34px;border-radius:46px;border:1px solid rgba(248,248,248,.22);color:#F8F8F8;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;transition:all .4s" style-hover="border-color:#25D366;background:rgba(37,211,102,.08)">WhatsApp</a>
+          <a href="#book" style="text-decoration:none;display:inline-flex;align-items:center;gap:10px;padding:17px 38px;border-radius:46px;background:#F8F8F8;color:#0F0F0F;font-size:13.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;transition:all .4s" style-hover="transform:translateY(-3px);box-shadow:0 18px 40px rgba(212,175,55,.25)">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="contact" style="position:relative;padding:110px 6vw 120px;background:#0c0c0c;border-top:1px solid rgba(255,255,255,.04)">
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:54px;align-items:stretch">
+      <div>
+        <div data-reveal style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+          <span style="width:34px;height:1px;background:#D4AF37"></span>
+          <span style="font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#D4AF37">Visit Us</span>
+        </div>
+        <h2 data-reveal data-delay="80" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(32px,4.2vw,54px);line-height:1.06">Find your way<br>to <span style="font-style:italic;color:#D4AF37">Face2Face</span>.</h2>
+        <div data-reveal data-delay="160" style="margin-top:38px;display:flex;flex-direction:column;gap:26px">
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="color:#D4AF37;font-size:18px;margin-top:2px">⌖</span>
+            <div><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(248,248,248,.45);margin-bottom:5px">Address</div><div style="font-size:15.5px;color:#F8F8F8;font-weight:300;line-height:1.6">Main Market Road, Near Bus Stand,<br>Suratgarh, Rajasthan 335804</div></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="color:#D4AF37;font-size:18px;margin-top:2px">✆</span>
+            <div><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(248,248,248,.45);margin-bottom:5px">Phone</div><a href="tel:+919829000000" style="font-size:15.5px;color:#F8F8F8;font-weight:300;text-decoration:none">+91 98290 00000</a></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <span style="color:#D4AF37;font-size:18px;margin-top:2px">◷</span>
+            <div><div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(248,248,248,.45);margin-bottom:5px">Opening Hours</div><div style="font-size:15.5px;color:#F8F8F8;font-weight:300;line-height:1.7">Mon – Sat&nbsp;&nbsp;9:00 AM – 9:00 PM<br>Sunday&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10:00 AM – 7:00 PM</div></div>
+          </div>
+        </div>
+      </div>
+      <div data-reveal data-delay="120" style="position:relative;min-height:380px;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:radial-gradient(120% 120% at 40% 30%,#1b1a17,#101010,#0a0a0a)">
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(212,175,55,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,.06) 1px,transparent 1px);background-size:48px 48px"></div>
+        <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:12px 12px"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div style="width:18px;height:18px;border-radius:50%;background:#D4AF37;box-shadow:0 0 0 8px rgba(212,175,55,.18),0 0 26px rgba(212,175,55,.5)"></div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:18px;color:#F8F8F8">Face2Face Family Salon</div>
+          <div style="font-family:monospace;font-size:10px;letter-spacing:2px;color:rgba(248,248,248,.35)">[ google maps embed ]</div>
+        </div>
+        <a href="https://maps.google.com/?q=Suratgarh+Rajasthan" target="_blank" style="position:absolute;bottom:18px;right:18px;text-decoration:none;padding:11px 20px;border-radius:30px;background:rgba(248,248,248,.95);color:#0F0F0F;font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:500">Open in Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="position:relative;padding:80px 6vw 40px;background:#0a0a0a;border-top:1px solid rgba(255,255,255,.06)">
+    <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500">Face<span style="color:#D4AF37">2</span>Face</div>
+        <div style="font-size:9px;letter-spacing:5px;color:rgba(248,248,248,.4);text-transform:uppercase;margin-top:4px">Family Salon</div>
+        <p style="margin-top:20px;max-width:280px;color:rgba(248,248,248,.5);font-weight:300;line-height:1.7;font-size:14px">Premium grooming for men &amp; women in Suratgarh, Rajasthan. Where everyone leaves feeling their best.</p>
+        <div style="display:flex;gap:12px;margin-top:24px">
+          <a href="#top" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;color:rgba(248,248,248,.7);text-decoration:none;font-size:13px;transition:all .35s" style-hover="border-color:#D4AF37;color:#D4AF37">in</a>
+          <a href="#top" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;color:rgba(248,248,248,.7);text-decoration:none;font-size:13px;transition:all .35s" style-hover="border-color:#D4AF37;color:#D4AF37">ig</a>
+          <a href="#top" style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;color:rgba(248,248,248,.7);text-decoration:none;font-size:13px;transition:all .35s" style-hover="border-color:#D4AF37;color:#D4AF37">fb</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-bottom:20px">Quick Links</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="#services" style="text-decoration:none;color:rgba(248,248,248,.55);font-size:14px;font-weight:300;transition:color .3s" style-hover="color:#F8F8F8">Services</a>
+          <a href="#about" style="text-decoration:none;color:rgba(248,248,248,.55);font-size:14px;font-weight:300;transition:color .3s" style-hover="color:#F8F8F8">About</a>
+          <a href="#gallery" style="text-decoration:none;color:rgba(248,248,248,.55);font-size:14px;font-weight:300;transition:color .3s" style-hover="color:#F8F8F8">Gallery</a>
+          <a href="#reviews" style="text-decoration:none;color:rgba(248,248,248,.55);font-size:14px;font-weight:300;transition:color .3s" style-hover="color:#F8F8F8">Reviews</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-bottom:20px">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:12px;color:rgba(248,248,248,.55);font-size:14px;font-weight:300">
+          <a href="tel:+919829000000" style="text-decoration:none;color:rgba(248,248,248,.55)">+91 98290 00000</a>
+          <span>Main Market Road,<br>Suratgarh, Rajasthan</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#D4AF37;margin-bottom:20px">Business Hours</div>
+        <div style="display:flex;flex-direction:column;gap:12px;color:rgba(248,248,248,.55);font-size:14px;font-weight:300">
+          <span>Mon – Sat · 9AM – 9PM</span>
+          <span>Sunday · 10AM – 7PM</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:60px;padding-top:26px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <span style="font-size:12px;color:rgba(248,248,248,.35)">© 2026 Face2Face Family Salon. All rights reserved.</span>
+      <span style="font-size:12px;color:rgba(248,248,248,.35)">Crafted with care · Demo concept</span>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/919829000000" target="_blank" style="position:fixed;bottom:26px;right:26px;z-index:160;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.4);text-decoration:none;animation:f2fFloat 4s ease-in-out infinite;transition:transform .35s" style-hover="transform:scale(1.1)">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.512 5.26l-.999 3.648 3.476-.999zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  </a>
+
+  <!-- BACK TO TOP -->
+  <button data-totop="1" onClick="{{ scrollTop }}" style="position:fixed;bottom:92px;right:26px;z-index:160;width:46px;height:46px;border-radius:50%;background:#1A1A1A;border:1px solid rgba(212,175,55,.4);color:#D4AF37;cursor:pointer;font-size:16px;opacity:0;pointer-events:none;transform:translateY(10px);transition:all .4s;box-shadow:0 10px 26px rgba(0,0,0,.4)" style-hover="background:#222">↑</button>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  rootRef = React.createRef();
+  state = { idx: 0 };
+
+  reviews = [
+    { text: "Honestly the best salon experience I've had — and I've been to places in Jaipur. Calm, clean and the cut was perfect.", name: "Ankit Sharma", role: "Regular Guest", initial: "A" },
+    { text: "Did my bridal makeup here and I felt absolutely stunning. The team is so patient and talented. Forever grateful.", name: "Priya Meena", role: "Bride", initial: "P" },
+    { text: "Premium feel, fair prices. My whole family comes here now — the kids, my wife, me. Everyone leaves happy.", name: "Rahul Verma", role: "Family Guest", initial: "R" },
+    { text: "The hair spa is pure relaxation. Quality products, spotless space and genuinely warm staff. Highly recommend.", name: "Sneha Gupta", role: "Skin & Spa", initial: "S" },
+  ];
+
+  renderVals() {
+    const idx = this.state.idx;
+    const reviews = this.reviews.map((r, i) => ({
+      ...r,
+      go: () => this.setState({ idx: i }),
+      dotStyle: `width:${i === idx ? '26px' : '8px'};height:8px;border-radius:6px;border:none;cursor:pointer;padding:0;transition:all .4s;background:${i === idx ? '#D4AF37' : 'rgba(248,248,248,.22)'}`,
+    }));
+    return {
+      rootRef: this.rootRef,
+      review: this.reviews[idx],
+      reviews,
+      nextReview: () => this.setState(s => ({ idx: (s.idx + 1) % this.reviews.length })),
+      prevReview: () => this.setState(s => ({ idx: (s.idx - 1 + this.reviews.length) % this.reviews.length })),
+      scrollTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+    };
+  }
+
+  componentDidMount() {
+    const root = this.rootRef.current;
+    if (!root) return;
+
+    // scroll-driven UI
+    const progress = root.querySelector('[data-progress]');
+    const navBar = root.querySelector('[data-nav-bar]');
+    const toTop = root.querySelector('[data-totop]');
+    this.onScroll = () => {
+      const st = window.scrollY || document.documentElement.scrollTop;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (progress) progress.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+      if (navBar) {
+        if (st > 40) {
+          navBar.style.background = 'rgba(10,10,10,.72)';
+          navBar.style.backdropFilter = 'blur(18px)';
+          navBar.style.webkitBackdropFilter = 'blur(18px)';
+          navBar.style.borderBottom = '1px solid rgba(255,255,255,.06)';
+          navBar.style.padding = '16px 6vw';
+        } else {
+          navBar.style.background = 'transparent';
+          navBar.style.backdropFilter = 'none';
+          navBar.style.webkitBackdropFilter = 'none';
+          navBar.style.borderBottom = '1px solid transparent';
+          navBar.style.padding = '26px 6vw';
+        }
+      }
+      if (toTop) {
+        if (st > 600) { toTop.style.opacity = '1'; toTop.style.pointerEvents = 'auto'; toTop.style.transform = 'translateY(0)'; }
+        else { toTop.style.opacity = '0'; toTop.style.pointerEvents = 'none'; toTop.style.transform = 'translateY(10px)'; }
+      }
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+
+    // reveal on scroll
+    const reveals = root.querySelectorAll('[data-reveal]');
+    reveals.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(34px)';
+      el.style.transition = 'opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1)';
+      el.style.transitionDelay = (parseInt(el.getAttribute('data-delay') || '0', 10)) + 'ms';
+    });
+    this.revObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          this.revObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(el => this.revObs.observe(el));
+
+    // service top-line on hover (group effect via JS)
+    root.querySelectorAll('[data-svc]').forEach(card => {
+      const line = card.querySelector('[data-svc-line]');
+      card.addEventListener('mouseenter', () => { if (line) line.style.transform = 'scaleX(1)'; });
+      card.addEventListener('mouseleave', () => { if (line) line.style.transform = 'scaleX(0)'; });
+    });
+
+    // counters
+    const counters = root.querySelectorAll('[data-count]');
+    this.cntObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const el = e.target;
+          const target = parseFloat(el.getAttribute('data-count'));
+          const dec = parseInt(el.getAttribute('data-dec') || '0', 10);
+          const dur = 1400; const start = performance.now();
+          const step = (now) => {
+            const p = Math.min((now - start) / dur, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = (target * eased).toFixed(dec);
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = target.toFixed(dec);
+          };
+          requestAnimationFrame(step);
+          this.cntObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => this.cntObs.observe(el));
+
+    // active nav highlight
+    const navLinks = root.querySelectorAll('[data-nav]');
+    const sections = root.querySelectorAll('section[id]');
+    this.navObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          navLinks.forEach(l => {
+            const active = l.getAttribute('data-nav') === id;
+            l.style.color = active ? '#D4AF37' : 'rgba(248,248,248,.62)';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => this.navObs.observe(s));
+
+    // carousel autoplay
+    this.timer = setInterval(() => {
+      this.setState(s => ({ idx: (s.idx + 1) % this.reviews.length }));
+    }, 6000);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.revObs) this.revObs.disconnect();
+    if (this.cntObs) this.cntObs.disconnect();
+    if (this.navObs) this.navObs.disconnect();
+    if (this.timer) clearInterval(this.timer);
+  }
+}
+</script>
+</body>
+</html>

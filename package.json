@@ -1,0 +1,10 @@
+{
+  "name": "face2face-salon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Face2Face Salon & Academy — premium static marketing site for a women's salon & beauty academy",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs"
+  }
+}
