@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Sitemap for Face2Face Salon & Academy. Single-page site; sections are in-page anchors. -->
+<!-- Sitemap for Face2Face Salon, Spa & Academy Suratgarh -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://face2facesalon.in/</loc>
-    <lastmod>2026-06-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://face2face-salon.pages.dev/</loc>
+    <lastmod>2026-09-07</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://face2facesalon.in/images/hero-bride.jpg</image:loc>
-      <image:title>Face2Face Salon &amp; Academy — Suratgarh</image:title>
+      <image:loc>https://face2face-salon.pages.dev/images/hero-bride.jpg</image:loc>
+      <image:title>Face2Face Salon, Spa &amp; Academy — Suratgarh</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://face2face-salon.pages.dev/images/og-cover.jpg</image:loc>
+      <image:title>Face2Face Women's Parlour &amp; Spa Suratgarh</image:title>
     </image:image>
   </url>
 </urlset>

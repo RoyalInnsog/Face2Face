@@ -1,8 +1,7 @@
-# robots.txt — Face2Face Salon & Academy
-# Allow all well-behaved crawlers full access to the public site.
+# robots.txt — Face2Face Salon, Spa & Academy Suratgarh
 User-agent: *
 Allow: /
 Disallow: /_archive/
 
-# Sitemap location (update the host if the production domain changes).
-Sitemap: https://face2facesalon.in/sitemap.xml
+# Sitemap location
+Sitemap: https://face2face-salon.pages.dev/sitemap.xml
